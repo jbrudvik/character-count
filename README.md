@@ -1,4 +1,5 @@
-line-length
-===========
+# Line Length
 
-Measure line lengths
+Measure line lengths.
+
+When activated, Line Length shows line lengths under the mouse cursor.
