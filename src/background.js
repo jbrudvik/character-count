@@ -1,5 +1,3 @@
-// TODO: Figure out why this isn't working
-
 var enabled = false;
 
 function toggleIcon() {
@@ -10,5 +8,3 @@ function toggleIcon() {
 }
 
 chrome.browserAction.onClicked.addListener(toggleIcon);
-
-console.log('loaded');
