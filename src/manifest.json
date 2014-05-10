@@ -12,7 +12,7 @@
   },
 
   "browser_action": {
-    "default_title": "Show line lengths under the mouse cursor",
+    "default_title": "Show line lengths",
     "default_icon": {
       "19": "icons/inactive-19.png",
       "38": "icons/inactive-38.png"
