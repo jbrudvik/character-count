@@ -1,22 +1,27 @@
+var manifest = chrome.runtime.getManifest();
+
+var inactiveIcons = manifest.browser_action.default_icon;
 var activeIcons = {
-  path: {
-    '19': 'icons/active-19.png',
-    '38': 'icons/active-38.png'
-  }
+  '19': 'icons/active-19.png',
+  '38': 'icons/active-38.png'
 };
 
-var inactiveIcons = {
-  path: {
-    '19': 'icons/inactive-19.png',
-    '38': 'icons/inactive-38.png'
-  }
-};
+var inactiveTitle = manifest.browser_action.default_title;
+var activeTitle = 'Stop showing line lengths';
+
 
 var active = false;
 
-function toggleIcon() {
-  chrome.browserAction.setIcon(active ? inactiveIcons : activeIcons);
+function toggleActiveState() {
+  chrome.browserAction.setIcon({
+    path: active ? inactiveIcons : activeIcons
+  });
+
+  chrome.browserAction.setTitle({
+    title: active ? inactiveTitle : activeTitle
+  });
+
   active = !active;
 }
 
-chrome.browserAction.onClicked.addListener(toggleIcon);
+chrome.browserAction.onClicked.addListener(toggleActiveState);
