@@ -1,0 +1,7 @@
+{
+  "name": "line-length",
+  "private": true,
+  "dependencies": {
+    "jquery": "2.*"
+  }
+}

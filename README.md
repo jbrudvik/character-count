@@ -10,3 +10,11 @@ When activated, Line Length shows line lengths under the mouse cursor.
 The `src` directory contains all files needed by the extension.
 
 The `pxm` directory contains Pixelmator files from which image files used by the extension are generated.
+
+
+## Dependencies
+
+Before deploying the extension, dependencies must be installed:
+
+    $ cd src
+    $ bower install

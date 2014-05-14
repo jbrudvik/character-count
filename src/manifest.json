@@ -25,6 +25,7 @@
         "<all_urls>"
       ],
       "js": [
+        "bower_components/jquery/dist/jquery.min.js",
         "content.js"
       ]
     }
