@@ -3,4 +3,10 @@ function showTargetLineLength(event) {
   console.log($(target).width() + 'px');
 }
 
-$(document).on('mousemove', showTargetLineLength);
+chrome.runtime.onMessage.addListener(function (message) {
+  if (message.active) {
+    $(document).on('mousemove', showTargetLineLength);
+  } else {
+    $(document).off('mousemove', showTargetLineLength);
+  }
+});

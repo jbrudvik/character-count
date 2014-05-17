@@ -13,15 +13,19 @@ var activeTitle = 'Stop showing line lengths';
 var active = false;
 
 function toggleActiveState() {
+  active = !active;
+
   chrome.browserAction.setIcon({
-    path: active ? inactiveIcons : activeIcons
+    path: active ? activeIcons : inactiveIcons
   });
 
   chrome.browserAction.setTitle({
-    title: active ? inactiveTitle : activeTitle
+    title: active ? activeTitle : inactiveTitle
   });
 
-  active = !active;
+  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.sendMessage(tabs[0].id, { active: active });
+  });
 }
 
 chrome.browserAction.onClicked.addListener(toggleActiveState);
