@@ -12,8 +12,9 @@ var activeTitle = 'Stop showing line lengths';
 
 var active = false;
 
-function toggleActiveState() {
-  active = !active;
+
+function setActiveState(activeState) {
+  active = activeState;
 
   chrome.browserAction.setIcon({
     path: active ? activeIcons : inactiveIcons
@@ -28,4 +29,13 @@ function toggleActiveState() {
   });
 }
 
+function toggleActiveState() {
+  setActiveState(!active);
+}
+
+
 chrome.browserAction.onClicked.addListener(toggleActiveState);
+
+chrome.runtime.onMessage.addListener(function (message) {
+  setActiveState(!!message.active);
+});
