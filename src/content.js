@@ -3,6 +3,10 @@ var ESCAPE_KEY = 27;
 function showTargetLineLength(event) {
   var target = event.target;
   console.log($(target).width() + 'px');
+
+  var html = $(target).html();
+  var markedHtml = html.replace(/(\S+)/g, '<span>$1</span>');
+  $(target).html(markedHtml);
 }
 
 var listeningForMousemove = false;
