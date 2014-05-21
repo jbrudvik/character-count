@@ -2,6 +2,7 @@
   "name": "line-length",
   "private": true,
   "dependencies": {
-    "jquery": "2.*"
+    "jquery": "2.*",
+    "underscore": "1.*"
   }
 }

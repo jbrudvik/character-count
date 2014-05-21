@@ -1,23 +1,38 @@
 var ESCAPE_KEY = 27;
+var TARGET = 'line-length-target';
+var WORD = 'line-length-word';
 
 function showTargetLineLength(event) {
   var target = event.target;
-  console.log($(target).width() + 'px');
+  // console.log($(target).width() + 'px');
 
-  var html = $(target).html();
-  var markedHtml = html.replace(/(\S+)/g, '<span>$1</span>');
-  $(target).html(markedHtml);
+  if (!$(target).hasClass(TARGET)) {
+    var html = $(target).html();
+    var markedHtml = html.replace(/(\S+)/g, '<span class="' + WORD + '">$1</span>');
+    markedHtml = '<span class="' + TARGET + '">' + markedHtml + '</span>';
+
+    $(target).html(markedHtml);
+
+    var $spannedWords = $(target).find('span');
+    var wordsByHeight = _.groupBy($spannedWords, function (word) {
+      return $(word).offset().top;
+    });
+
+    console.log(wordsByHeight);
+
+    $(target).html(html);
+  }
 }
 
 var listeningForMousemove = false;
 chrome.runtime.onMessage.addListener(function (message) {
-  if (!listeningForMousemove && message.active) {
-    $(document).on('mousemove', showTargetLineLength);
-    listeningForMousemove = true;
+  var shouldAttachListener = !listeningForMousemove && message.active;
+  if (shouldAttachListener) {
+    $(document.body).on('mousemove', showTargetLineLength);
   } else {
-    $(document).off('mousemove', showTargetLineLength);
-    listeningForMousemove = false;
+    $(document.body).off('mousemove', showTargetLineLength);
   }
+  listeningForMousemove = shouldAttachListener;
 });
 
 $(document).on('keydown', function (event) {
