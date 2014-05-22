@@ -18,7 +18,7 @@ function showTargetLineLength(event) {
       return $(word).offset().top;
     });
 
-    console.log(wordsByHeight);
+    console.log(_.keys(wordsByHeight));
 
     $(target).html(html);
   }
