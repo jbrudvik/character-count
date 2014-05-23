@@ -1,38 +1,45 @@
 var ESCAPE_KEY = 27;
-var TARGET = 'line-length-target';
-var WORD = 'line-length-word';
 
-function showTargetLineLength(event) {
-  var target = event.target;
-  // console.log($(target).width() + 'px');
+var prevCharCount;
+var prevText;
+var prevX;
+var prevY;
 
-  if (!$(target).hasClass(TARGET)) {
-    var html = $(target).html();
-    var markedHtml = html.replace(/(\S+)/g, '<span class="' + WORD + '">$1</span>');
-    markedHtml = '<span class="' + TARGET + '">' + markedHtml + '</span>';
+function showSelectionCharCount(event) {
+  var selection = window.getSelection();
+  if (selection) {
+    var text = selection.toString();
+    if (text && text.length) {
+      var charCount = text.length;
 
-    $(target).html(markedHtml);
+      var rect = selection.getRangeAt(0).getBoundingClientRect();
+      var x = rect.left;
+      var y = rect.top;
 
-    var $spannedWords = $(target).find('span');
-    var wordsByHeight = _.groupBy($spannedWords, function (word) {
-      return $(word).offset().top;
-    });
-
-    console.log(_.keys(wordsByHeight));
-
-    $(target).html(html);
+      if (charCount !== prevCharCount || text !== prevText || x !== prevX || y !== prevY) {
+        console.log(text.length + ' characters in: ' + text);
+        prevCharCount = charCount;
+        prevText = text;
+        prevX = x;
+        prevY = y;
+      }
+    }
   }
 }
 
-var listeningForMousemove = false;
+var listeningToMouse = false;
 chrome.runtime.onMessage.addListener(function (message) {
-  var shouldAttachListener = !listeningForMousemove && message.active;
+  var shouldAttachListener = !listeningToMouse && message.active;
   if (shouldAttachListener) {
-    $(document.body).on('mousemove', showTargetLineLength);
+    $(document.body).on('mousemove', showSelectionCharCount);
+    $(document.body).on('mouseup', showSelectionCharCount);
+    $(document.body).on('keydown', showSelectionCharCount);
   } else {
-    $(document.body).off('mousemove', showTargetLineLength);
+    $(document.body).off('mousemove', showSelectionCharCount);
+    $(document.body).off('mouseup', showSelectionCharCount);
+    $(document.body).off('keydown', showSelectionCharCount);
   }
-  listeningForMousemove = shouldAttachListener;
+  listeningToMouse = shouldAttachListener;
 });
 
 $(document).on('keydown', function (event) {
