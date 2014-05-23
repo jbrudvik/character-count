@@ -3,7 +3,8 @@ var ESCAPE_KEY = 27;
 var events = [
   'mousemove',
   'mouseup',
-  'keydown'
+  'keydown',
+  'keyup'
 ];
 
 var prevCharCount;
