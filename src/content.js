@@ -1,5 +1,11 @@
 var ESCAPE_KEY = 27;
 
+var events = [
+  'mousemove',
+  'mouseup',
+  'keydown'
+];
+
 var prevCharCount;
 var prevText;
 var prevX;
@@ -31,13 +37,13 @@ var listeningToMouse = false;
 chrome.runtime.onMessage.addListener(function (message) {
   var shouldAttachListener = !listeningToMouse && message.active;
   if (shouldAttachListener) {
-    $(document.body).on('mousemove', showSelectionCharCount);
-    $(document.body).on('mouseup', showSelectionCharCount);
-    $(document.body).on('keydown', showSelectionCharCount);
+    _.each(events, function (event) {
+      $(document.body).on(event, showSelectionCharCount);
+    });
   } else {
-    $(document.body).off('mousemove', showSelectionCharCount);
-    $(document.body).off('mouseup', showSelectionCharCount);
-    $(document.body).off('keydown', showSelectionCharCount);
+    _.each(events, function (event) {
+      $(document.body).off(event, showSelectionCharCount);
+    });
   }
   listeningToMouse = shouldAttachListener;
 });
