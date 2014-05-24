@@ -7,6 +7,26 @@ var events = [
   'keyup'
 ];
 
+var popup;
+
+function createPopup() {
+  var iframe = $('<iframe>');
+  iframe.css({
+    'position': 'absolute',
+    'left': '0px',
+    'top': '0px',
+    'width': '50px',
+    'height': '50px',
+    'margin': '0',
+    'padding': '0',
+    'border': 'none',
+    'background-color': '#eee',
+    'color': '#333',
+    'display': 'none'
+  });
+  return iframe;
+}
+
 var prevCharCount;
 var prevText;
 var prevX;
@@ -25,12 +45,20 @@ function showSelectionCharCount(event) {
 
       if (charCount !== prevCharCount || text !== prevText || x !== prevX || y !== prevY) {
         console.log(text.length + ' characters in: ' + text);
+
+        popup.contents().find('body').html('<p>' + text.length + '</p>');
+        popup.css('display', 'block');
+
         prevCharCount = charCount;
         prevText = text;
         prevX = x;
         prevY = y;
       }
+    } else {
+      popup.css('display', 'none');
     }
+  } else {
+    popup.css('display', 'none');
   }
 }
 
@@ -48,6 +76,9 @@ chrome.runtime.onMessage.addListener(function (message) {
   }
   listeningToMouse = shouldAttachListener;
 });
+
+popup = createPopup();
+document.body.appendChild(popup[0]);
 
 $(document).on('keydown', function (event) {
   if (event.which === ESCAPE_KEY) {
