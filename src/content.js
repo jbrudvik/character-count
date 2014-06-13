@@ -56,7 +56,8 @@ function showSelectionCharCount(event) {
       var y = rect.top;
 
       if (charCount !== prevCharCount || text !== prevText || x !== prevX || y !== prevY) {
-        showPopup(popup, text.length + ' characters selected');
+        var message = charCount + ' character' + (charCount === 1 ? '' : 's') + ' selected';
+        showPopup(popup, message);
 
         prevCharCount = charCount;
         prevText = text;
