@@ -10,21 +10,32 @@ var events = [
 var popup;
 
 function createPopup() {
-  var iframe = $('<iframe>');
-  iframe.css({
-    'position': 'absolute',
-    'left': '0px',
-    'top': '0px',
-    'width': '50px',
-    'height': '50px',
-    'margin': '0',
-    'padding': '0',
+  var popup = $('<div id="popup">');
+  popup.css({
+    'position': 'fixed',
+    'top': 0,
+    'right': 0,
+    'width': 'auto',
+    'height': 'auto',
+    'margin': 0,
+    'padding': '6px',
     'border': 'none',
-    'background-color': '#eee',
+    'background-color': 'rgba(255, 255, 255, 0.8)',
     'color': '#333',
+    'font-family': 'Menlo, Consolas, "Liberation Mono", monospace',
+    'font-size': '14px',
     'display': 'none'
   });
-  return iframe;
+  return popup;
+}
+
+function showPopup(popup, content) {
+  popup.html(content);
+  popup.css('display', 'block');
+}
+
+function hidePopup(popup) {
+  popup.css('display', 'none');
 }
 
 var prevCharCount;
@@ -46,8 +57,7 @@ function showSelectionCharCount(event) {
       if (charCount !== prevCharCount || text !== prevText || x !== prevX || y !== prevY) {
         console.log(text.length + ' characters in: ' + text);
 
-        popup.contents().find('body').html('<p>' + text.length + '</p>');
-        popup.css('display', 'block');
+        showPopup(popup, text.length + ' characters selected');
 
         prevCharCount = charCount;
         prevText = text;
@@ -55,10 +65,10 @@ function showSelectionCharCount(event) {
         prevY = y;
       }
     } else {
-      popup.css('display', 'none');
+      hidePopup(popup);
     }
   } else {
-    popup.css('display', 'none');
+    hidePopup(popup);
   }
 }
 
