@@ -13,6 +13,7 @@ function createPopup() {
   var popup = $('<div id="popup">');
   popup.css({
     'position': 'fixed',
+    'z-index': 10000000,
     'top': 0,
     'right': 0,
     'width': 'auto',
