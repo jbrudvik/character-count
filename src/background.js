@@ -7,7 +7,7 @@ var activeIcons = {
 };
 
 var inactiveTitle = manifest.browser_action.default_title;
-var activeTitle = 'Stop showing line lengths';
+var activeTitle = 'Hide number of characters selected';
 
 
 var active = false;
