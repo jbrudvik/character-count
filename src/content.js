@@ -10,7 +10,7 @@ var events = [
 var popup;
 
 function createPopup() {
-  var popup = $('<div id="popup">');
+  var popup = $('<div id="character-count-popup">');
   popup.css({
     'position': 'fixed',
     'z-index': 10000000,
