@@ -25,6 +25,8 @@ function createPopup() {
     'color': '#333',
     'font-family': 'Menlo, Consolas, "Liberation Mono", monospace',
     'font-size': '14px',
+    'user-select': 'none',
+    'pointer-events': 'none',
     'display': 'none'
   });
   return popup;
