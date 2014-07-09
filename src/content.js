@@ -166,6 +166,7 @@ function SelectionListener(target) {
     'mouseup',
     'keydown',
     'keyup',
+    'scroll',
     this.SELECTION_CHANGE_IMMINENT_EVENT
   ];
 
