@@ -117,6 +117,16 @@ EquatableSelection.prototype._computeCount = function (selection) {
         return countWithCompressedNewlines - 1;
       }
     }
+
+    // If focus node trails anchor node, selection.toString() sometimes fails
+    // to include leading whitespace, even if it selected. Increase count by
+    // one if there is a discrepancy with focusOffset.
+    if (focusNode.compareDocumentPosition(anchorNode) & Node.DOCUMENT_POSITION_FOLLOWING) {
+      var leadingCharacter = focusNode.data[selection.focusOffset];
+      if (leadingCharacter && leadingCharacter !== text[0] && leadingCharacter === ' ') {
+          return countWithCompressedNewlines + 1;
+      }
+    }
   }
 
   return countWithCompressedNewlines;
