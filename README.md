@@ -1,8 +1,8 @@
-# Line Length
+# Character Count
 
-A Google Chrome extension for measuring line lengths.
+A Google Chrome extension for measuring the number of characters in a selection.
 
-When activated, Line Length shows line lengths under the mouse cursor.
+When activated, Character Count shows the number of characters in the current selection in a small popup in the top-right corner of the browser window.
 
 
 ## Development

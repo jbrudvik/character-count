@@ -1,9 +1,9 @@
 {
   "manifest_version": 2,
 
-  "name": "Line Length",
-  "description": "Measure line lengths.",
-  "version": "0.0.1",
+  "name": "Character Count",
+  "description": "Counts characters in selections.",
+  "version": "0.0.2",
 
   "background": {
     "scripts": [
