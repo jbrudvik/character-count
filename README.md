@@ -1,6 +1,6 @@
 # Character Count
 
-A Google Chrome extension for measuring the number of characters in a selection.
+A Google Chrome extension for viewing the number of characters in text selections.
 
 When activated, Character Count shows the number of characters in the current selection in a small popup in the top-right corner of the browser window.
 
