@@ -94,25 +94,28 @@ EquatableSelection.prototype._computeCount = function (selection) {
     return 0;
   }
 
-  var anchorNode = selection.anchorNode; // node containing start of selection
-  var focusNode = selection.focusNode; // node containing end of selection
-
-  // If the anchor node and the focus node are the same, the count of characters
-  // selected is the absolute difference of the anchor and focus offsets
-  if (anchorNode === focusNode) {
-    return Math.abs(selection.focusOffset - selection.anchorOffset);
-  }
-
   // Consider a groups of newline whitespace to be one space each
   var countWithCompressedNewlines = text.replace(/[\n\r]+/g, ' ').length;
 
-  // If focus node follows anchor node, selection.toString() sometimes includes
-  // trailing whitespace even if it isn't selected. Decrease count by one if there
-  // is a discrepancy with focusOffset.
-  if (anchorNode.compareDocumentPosition(focusNode) & Node.DOCUMENT_POSITION_FOLLOWING) {
-    if (focusNode.nodeType === Node.TEXT_NODE &&
-        focusNode.data[selection.focusOffset - 1] !== text[text.length - 1]) {
-      return countWithCompressedNewlines - 1;
+  var anchorNode = selection.anchorNode; // node containing start of selection
+  var focusNode = selection.focusNode; // node containing end of selection
+
+  // If focus node is a text node, considerly slightly more accurate counting approaches
+  if (focusNode.nodeType == Node.TEXT_NODE) {
+
+    // If the anchor node and the focus node are the same, the count of characters
+    // selected is the absolute difference of the anchor and focus offsets
+    if (anchorNode === focusNode) {
+      return Math.abs(selection.focusOffset - selection.anchorOffset);
+    }
+
+    // If focus node follows anchor node, selection.toString() sometimes includes
+    // trailing whitespace even if it isn't selected. Decrease count by one if there
+    // is a discrepancy with focusOffset.
+    if (anchorNode.compareDocumentPosition(focusNode) & Node.DOCUMENT_POSITION_FOLLOWING) {
+      if (focusNode.data[selection.focusOffset - 1] !== text[text.length - 1]) {
+        return countWithCompressedNewlines - 1;
+      }
     }
   }
 
