@@ -249,15 +249,6 @@ var target = window;
 var popup = new CharacterCountPopup();
 var selectionListener = new SelectionListener(target);
 
-// Listen for messages from other parts of the extension to start/stop selection listening
-chrome.runtime.onMessage.addListener(function (message) {
-  if (message.active) {
-    selectionListener.start();
-  } else {
-    selectionListener.stop();
-  }
-});
-
 // Listen for selection changes and show/hide the popup based on the number of
 // characters selected
 $(target).on(SELECTION_CHANGE_EVENT, function (event) {
@@ -265,6 +256,15 @@ $(target).on(SELECTION_CHANGE_EVENT, function (event) {
     popup.show(event.selection.count);
   } else {
     popup.hide();
+  }
+});
+
+// Listen for messages from other parts of the extension to start/stop selection listening
+chrome.runtime.onMessage.addListener(function (message) {
+  if (message.active) {
+    selectionListener.start();
+  } else {
+    selectionListener.stop();
   }
 });
 
