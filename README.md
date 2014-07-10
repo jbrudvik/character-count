@@ -10,6 +10,11 @@ When activated, Character Count shows the number of characters in the current se
 - Click the extension button to stop showing number of characters in selections. The ESC key can also be used to deactivate.
 
 
+## Install
+
+Install from the Chrome Web Store: [https://chrome.google.com/webstore/detail/character-count/bpjdkinahbalcimnlaijodhiigpfkmjf]()
+
+
 ## Development
 
 The `src` directory contains all files needed by the extension.
@@ -17,7 +22,7 @@ The `src` directory contains all files needed by the extension.
 The `pxm` directory contains Pixelmator files from which image files used by the extension are generated.
 
 
-## Dependencies
+### Dependencies
 
 Before deploying the extension, dependencies must be installed:
 
