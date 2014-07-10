@@ -3,7 +3,7 @@
 
   "name": "Character Count",
   "description": "Counts characters in selections.",
-  "version": "1.0.0",
+  "version": "1.0.1",
 
   "background": {
     "scripts": [
