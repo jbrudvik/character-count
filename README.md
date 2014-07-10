@@ -7,7 +7,7 @@ When activated, Character Count shows the number of characters in the current se
 - Click extension button to start showing number of characters in selections
 - Select text (with mouse or keyboard) to see the number of characters
 - Quickly view the number of characters on an entire page using keyboard shortcut (OS X: CMD-a, Windows: CTRL-a)
-- Click extension button to stop showing number of characters in selections. The ESC key can also be used.
+- Click extension button to stop showing number of characters in selections. The ESC key can also be used to deactivate.
 
 
 ## Development
