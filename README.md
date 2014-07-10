@@ -12,7 +12,7 @@ When activated, Character Count shows the number of characters in the current se
 
 ## Install
 
-Install from the Chrome Web Store: [https://chrome.google.com/webstore/detail/character-count/bpjdkinahbalcimnlaijodhiigpfkmjf]()
+Install from the Chrome Web Store: [https://chrome.google.com/webstore/detail/character-count/bpjdkinahbalcimnlaijodhiigpfkmjf]](https://chrome.google.com/webstore/detail/character-count/bpjdkinahbalcimnlaijodhiigpfkmjf])
 
 
 ## Development
