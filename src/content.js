@@ -17,7 +17,7 @@ function CharacterCountPopup() {
   this.ID = 'character-count-popup';
   this.popup = $('<div id="' + this.ID + '">').css({
     'position': 'fixed',
-    'z-index': 10000000,
+    'z-index': 2147483647,
     'top': 0,
     'right': 0,
     'width': 'auto',
