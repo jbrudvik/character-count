@@ -61,14 +61,14 @@ function CharacterCount() {
  * Tab may be specified by trailing optional parameter. If not, current tab
  * is assumed.
  */
-CharacterCount.prototype.get = function (next, tabId) {
+CharacterCount.prototype.get = function (callback, tabId) {
   if (!tabId) {
     var self = this;
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-      next(tabs[0].id in self.activeTabs);
+      callback(tabs[0].id in self.activeTabs);
     });
   } else {
-    next(tabId in this.activeTabs);
+    callback(tabId in this.activeTabs);
   }
 };
 
