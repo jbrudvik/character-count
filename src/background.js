@@ -56,18 +56,6 @@ function CharacterCount() {
 }
 
 /*
- * Get the current active tab via single-parameter callback.
- *
- * May be undefined.
- */
-CharacterCount.prototype._getCurrentTab = function (next) {
-  chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
-    var tabId = tabs[0].id;
-    next(tabId);
-  });
-};
-
-/*
  * Get the extension state for a tab via single-parameter callback.
  *
  * Tab may be specified by trailing optional parameter. If not, current tab
@@ -76,8 +64,8 @@ CharacterCount.prototype._getCurrentTab = function (next) {
 CharacterCount.prototype.get = function (next, tabId) {
   if (!tabId) {
     var self = this;
-    this._getCurrentTab(function (tabId) {
-      next(tabId in self.activeTabs);
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      next(tabs[0].id in self.activeTabs);
     });
   } else {
     next(tabId in this.activeTabs);
@@ -93,7 +81,8 @@ CharacterCount.prototype.get = function (next, tabId) {
 CharacterCount.prototype.set = function (state, tabId) {
   var self = this;
   if (!tabId) {
-    this._getCurrentTab(function (tabId) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+      var tabId = tabs[0].id;
       if (tabId) {
         self.set(state, tabId);
       } // else: no tab specified nor a current tab. Ignore set attempt.
