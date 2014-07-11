@@ -14,7 +14,7 @@ var SELECTION_CHANGE_EVENT = 'selectionChange';
  * Creates and controls an element that displays character count information
  */
 function CharacterCountPopup() {
-  this.popup = $('<div>', { id: 'character-count-popup' }).css({
+  this.$popup = $('<div>', { id: 'character-count-popup' }).css({
     'position': 'fixed',
     'z-index': 2147483647,
     'top': 0,
@@ -35,7 +35,7 @@ function CharacterCountPopup() {
     'vertical-align': 'baseline',
     'user-select': 'none',
     'pointer-events': 'none'
-  })[0];
+  });
 }
 
 /*
@@ -50,18 +50,16 @@ CharacterCountPopup.prototype.getMessageForCount = function (count) {
  */
 CharacterCountPopup.prototype.show = function (count) {
   var message = this.getMessageForCount(count || 0);
-  $(this.popup).html(message);
-  document.body.appendChild(this.popup);
+  this.$popup
+    .html(message)
+    .appendTo(document.body);
 };
 
 /*
  * Hide character count popup
  */
 CharacterCountPopup.prototype.hide = function () {
-  var parent = this.popup.parentNode;
-  if (parent) {
-    parent.removeChild(this.popup);
-  }
+  this.$popup.remove();
 };
 
 
