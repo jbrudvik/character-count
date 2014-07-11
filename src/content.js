@@ -14,8 +14,7 @@ var SELECTION_CHANGE_EVENT = 'selectionChange';
  * Creates and controls an element that displays character count information
  */
 function CharacterCountPopup() {
-  this.ID = 'character-count-popup';
-  this.popup = $('<div>', { id: this.ID }).css({
+  this.popup = $('<div>', { id: 'character-count-popup' }).css({
     'position': 'fixed',
     'z-index': 2147483647,
     'top': 0,
