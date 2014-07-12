@@ -16,14 +16,9 @@ Note: Tabs must be reloaded after installing Character Count.
 
 ## Development
 
-The `src` directory contains all files needed by the extension.
-
-The `pxm` directory contains Pixelmator files from which image files used by the extension are generated.
-
-
-### Dependencies
-
-Before deploying the extension, dependencies must be installed:
+The `src` directory contains all files needed by the extension, except the dependencies:
 
     $ cd src
     $ bower install
+
+After installing the dependencies, [load the unpacked extension](https://developer.chrome.com/extensions/getstarted#unpacked) from the `src` directory.
