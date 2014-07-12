@@ -92,7 +92,12 @@ EquatableSelection.prototype._computeCount = function (selection) {
   }
 
   // Consider a groups of newline whitespace to be one space each
-  var countWithCompressedNewlines = text.replace(/[\n\r]+/g, ' ').length;
+  text = text.replace(/[\n\r]+/g, ' ');
+
+  // Strip out control characters
+  text = text.replace(/[\x00-\x1f]/g, '');
+
+  var count = text.length;
 
   var anchorNode = selection.anchorNode; // node containing start of selection
   var focusNode = selection.focusNode; // node containing end of selection
@@ -111,7 +116,7 @@ EquatableSelection.prototype._computeCount = function (selection) {
     // is a discrepancy with focusOffset.
     if (anchorNode.compareDocumentPosition(focusNode) & Node.DOCUMENT_POSITION_FOLLOWING) {
       if (focusNode.data[selection.focusOffset - 1] !== text[text.length - 1]) {
-        return countWithCompressedNewlines - 1;
+        return count - 1;
       }
     }
 
@@ -121,12 +126,12 @@ EquatableSelection.prototype._computeCount = function (selection) {
     if (focusNode.compareDocumentPosition(anchorNode) & Node.DOCUMENT_POSITION_FOLLOWING) {
       var leadingCharacter = focusNode.data[selection.focusOffset];
       if (leadingCharacter && leadingCharacter !== text[0] && leadingCharacter === ' ') {
-          return countWithCompressedNewlines + 1;
+          return count + 1;
       }
     }
   }
 
-  return countWithCompressedNewlines;
+  return count;
 };
 
 /*
