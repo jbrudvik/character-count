@@ -42,16 +42,16 @@ function CharacterCount() {
 
   // On page loads (and other tab updates), restore active tabs
   chrome.tabs.onUpdated.addListener(function () {
-    self.get(function (state) {
+    self.getState(function (state) {
       if (state) {
-        self.set(state);
+        self.setState(state);
       }
     });
   });
 
   // When a tab is removed (either by tab close or window close), forget about it
   chrome.tabs.onRemoved.addListener(function (tabId) {
-    self.set(false, tabId);
+    self.setState(false, tabId);
   });
 }
 
@@ -61,7 +61,7 @@ function CharacterCount() {
  * Tab may be specified by trailing optional parameter. If not, current tab
  * is assumed.
  */
-CharacterCount.prototype.get = function (callback, tabId) {
+CharacterCount.prototype.getState = function (callback, tabId) {
   if (!tabId) {
     var self = this;
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
@@ -78,13 +78,13 @@ CharacterCount.prototype.get = function (callback, tabId) {
  * Tab may be specified by trailing optional parameter. If not, current tab
  * is assumed.
  */
-CharacterCount.prototype.set = function (state, tabId) {
+CharacterCount.prototype.setState = function (state, tabId) {
   var self = this;
   if (!tabId) {
     chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
       var tabId = tabs[0].id;
       if (tabId) {
-        self.set(state, tabId);
+        self.setState(state, tabId);
       } // else: no tab specified nor a current tab. Ignore set attempt.
     });
   } else {
@@ -120,10 +120,10 @@ CharacterCount.prototype.set = function (state, tabId) {
  * Tab may be specified by trailing optional parameter. If not, current tab
  * is assumed.
  */
-CharacterCount.prototype.toggle = function (tabId) {
+CharacterCount.prototype.toggleState = function (tabId) {
   var self = this;
-  this.get(function (state) {
-    self.set(!state, tabId);
+  this.getState(function (state) {
+    self.setState(!state, tabId);
   }, tabId);
 };
 
@@ -135,10 +135,10 @@ var cc = new CharacterCount();
 
 // When the browser action button is clicked, toggle the extension state
 chrome.browserAction.onClicked.addListener(function () {
-  cc.toggle();
+  cc.toggleState();
 });
 
 // Listen for messages from the extension to set extension state
 chrome.runtime.onMessage.addListener(function (message) {
-  cc.set(!!message.active);
+  cc.setState(!!message.active);
 });
