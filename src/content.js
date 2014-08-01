@@ -261,11 +261,8 @@ var selectionListener = new SelectionListener(target);
 // Listen for selection changes and show/hide the popup based on the number of
 // characters selected
 $(target).on(SELECTION_CHANGE_EVENT, function (event) {
-  if (event.selection) {
-    popup.show(event.selection.count);
-  } else {
-    popup.hide();
-  }
+  var count = event.selection ? event.selection.count : 0;
+  popup.show(count);
 });
 
 // Listen for messages from other parts of the extension to start/stop selection listening
