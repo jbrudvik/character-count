@@ -46,13 +46,19 @@ CharacterCountPopup.prototype.getMessageForCount = function (count) {
 };
 
 /*
- * Display character count popup with given count (default: 0)
+ * Display character count popup with given count.
+ *
+ * If count is undefined or 0, popup will be hidden.
  */
 CharacterCountPopup.prototype.show = function (count) {
-  var message = this.getMessageForCount(count || 0);
-  this.$popup
-    .html(message)
-    .appendTo(document.body);
+  if (!count) {
+    this.hide();
+  } else {
+    var message = this.getMessageForCount(count);
+    this.$popup
+      .html(message)
+      .appendTo(document.body);
+  }
 };
 
 /*
