@@ -36,7 +36,28 @@ function CharacterCountPopup() {
     'user-select': 'none',
     'pointer-events': 'none'
   });
+
+  this.namespace = 'CharacterCountPopup';
+  this.isShowing = false;
 }
+
+/*
+ * Ensure the popup is located at top of window.
+ *
+ * Fixed CSS positioning does not always hold, so force the correct absolute
+ * position if necessary.
+ */
+CharacterCountPopup.prototype.setToWindowTop = function () {
+  var popupTop = this.$popup.offset().top;
+  var scrollTop = window.scrollY;
+  if (popupTop !== scrollTop && scrollTop >= 0) {
+    console.log('setting position');
+    this.$popup.css({
+      'position': 'absolute',
+      'top': scrollTop
+    });
+  }
+};
 
 /*
  * Return message for given count (required)
@@ -55,9 +76,20 @@ CharacterCountPopup.prototype.show = function (count) {
     this.hide();
   } else {
     var message = this.getMessageForCount(count);
-    this.$popup
-      .html(message)
-      .appendTo(document.body);
+    this.$popup.html(message);
+
+    if (!this.isShowing) {
+      this.isShowing = true;
+
+      this.$popup.appendTo(document.body);
+      this.setToWindowTop();
+
+      // When scrolling, ensure that popup stays where it should be
+      var self = this;
+      $(window).on('scroll.' + this.namespace, function (event) {
+        self.setToWindowTop();
+      });
+    }
   }
 };
 
@@ -65,7 +97,10 @@ CharacterCountPopup.prototype.show = function (count) {
  * Hide character count popup
  */
 CharacterCountPopup.prototype.hide = function () {
+  // When hidden, don't listen to scroll events to limit performance impact
+  $(window).off('scroll.' + this.namespace);
   this.$popup.remove();
+  this.isShowing = false;
 };
 
 
@@ -178,6 +213,7 @@ function SelectionListener(target) {
     this.SELECTION_CHANGE_IMMINENT_EVENT
   ];
 
+  this.namespace = 'SelectionListener';
   this.isListening = false;
 }
 
@@ -224,7 +260,7 @@ SelectionListener.prototype.handleEvent = function (event) {
 SelectionListener.prototype.start = function () {
   if (!this.isListening) {
     _.each(this.events, function (event) {
-      $(this.target).on(event, this.handleEvent.bind(this));
+      $(this.target).on(event + '.' + this.namespace, this.handleEvent.bind(this));
     }, this);
     this.isListening = true;
 
@@ -244,7 +280,7 @@ SelectionListener.prototype.stop = function () {
     this.previous = null;
 
     _.each(this.events, function (event) {
-      $(this.target).off(event);
+      $(this.target).off(event + '.' + this.namespace);
     }, this);
     this.isListening = false;
   }
