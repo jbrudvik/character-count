@@ -2,6 +2,8 @@
  * Character Count background script
  */
 
+/* global chrome:false */
+
 
 /*
  * An object that keeps track of extension state, sets browser action UI, and

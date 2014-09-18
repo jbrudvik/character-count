@@ -2,6 +2,8 @@
  * Character Count content script
  */
 
+/* global $:false, _:false */
+
 
 /*
  * Constants
