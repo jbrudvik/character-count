@@ -2,6 +2,7 @@
   "manifest_version": 2,
 
   "name": "Character Count",
+  "short_name": "Char Count",
   "description": "Counts characters in selections.",
   "version": "1.0.4",
 
