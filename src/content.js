@@ -2,7 +2,8 @@
  * Character Count content script
  */
 
-/* global $:false, _:false */
+/* global chrome:false, $:false, _:false */
+/* jshint bitwise:false */
 
 
 /*
@@ -87,7 +88,7 @@ CharacterCountPopup.prototype.show = function (count) {
 
       // When scrolling, ensure that popup stays where it should be
       var self = this;
-      $(window).on('scroll.' + this.namespace, function (event) {
+      $(window).on('scroll.' + this.namespace, function () {
         self.setToWindowTop();
       });
     }
@@ -145,7 +146,7 @@ EquatableSelection.prototype._computeCount = function (selection) {
   var focusNode = selection.focusNode; // node containing end of selection
 
   // If focus node is a text node, considerly slightly more accurate counting approaches
-  if (focusNode.nodeType == Node.TEXT_NODE) {
+  if (focusNode.nodeType === Node.TEXT_NODE) {
 
     // If the anchor node and the focus node are the same, the count of characters
     // selected is the absolute difference of the anchor and focus offsets
