@@ -51,7 +51,6 @@ CharacterCountPopup.prototype.setToWindowTop = function () {
   var popupTop = this.$popup.offset().top;
   var scrollTop = window.scrollY;
   if (popupTop !== scrollTop && scrollTop >= 0) {
-    console.log('setting position');
     this.$popup.css({
       'position': 'absolute',
       'top': scrollTop
