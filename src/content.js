@@ -37,7 +37,8 @@ function CharacterCountPopup() {
     'text-decoration': 'none',
     'vertical-align': 'baseline',
     'user-select': 'none',
-    'pointer-events': 'none'
+    'pointer-events': 'none',
+    'border-radius': 0
   });
 
   this.namespace = 'CharacterCountPopup';
