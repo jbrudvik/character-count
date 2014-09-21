@@ -324,7 +324,7 @@ chrome.runtime.onMessage.addListener(function (message) {
   }
 });
 
-// When escape key is down, disable the extension
+// On escape key down, disable the extension
 $(document).on('keydown', function (event) {
   if (event.which === ESCAPE_KEY) {
     chrome.runtime.sendMessage({ active: false });
