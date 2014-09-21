@@ -289,6 +289,17 @@ SelectionListener.prototype.stop = function () {
   }
 };
 
+/*
+ * Toggle listening for selection changes.
+ */
+SelectionListener.prototype.toggle = function () {
+  if (this.isListening) {
+    this.stop();
+  } else {
+    this.start();
+  }
+};
+
 
 /*
  * Instantiate popup and and listeners
