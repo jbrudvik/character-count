@@ -28,6 +28,11 @@
       "js": [
         "bower_components/jquery/dist/jquery.min.js",
         "bower_components/underscore/underscore-min.js",
+        "bower_components/pluralize/pluralize.js",
+        "bower_components/textistics/textistics.js",
+        "bower_components/equatable-selection/equatable-selection.js",
+        "bower_components/selection-listener/selection-listener.js",
+        "bower_components/periphery-label/periphery-label.js",
         "content.js"
       ]
     }
