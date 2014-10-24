@@ -1,6 +1,3 @@
-/*
- * Character Count background script
- */
 
 /* global chrome:false */
 
