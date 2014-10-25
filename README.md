@@ -22,3 +22,6 @@ The `src` directory contains all files needed by the extension, except the depen
     $ bower install
 
 After installing the dependencies, [load the unpacked extension](https://developer.chrome.com/extensions/getstarted#unpacked) from the `src` directory.
+
+
+## Related
