@@ -25,3 +25,5 @@ After installing the dependencies, [load the unpacked extension](https://develop
 
 
 ## Related
+
+- [Word Count](https://github.com/jbrudvik/word-count)
