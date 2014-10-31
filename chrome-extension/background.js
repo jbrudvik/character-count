@@ -2,6 +2,16 @@
 /* global chrome:false */
 
 
+// TODO: There's definitely scaffolding here that could get pulled out.
+//       Can we put this code in one place and make character-count and word-count
+//       much more concise?
+
+// TODO: Definitely take the "CharacterCount" identifier out of here.
+//
+
+// What is this? An extension state?
+
+
 /*
  * An object that keeps track of extension state, sets browser action UI, and
  * communicates with underlying tab content scripts.
@@ -126,6 +136,11 @@ CharacterCount.prototype.toggleState = function (tabId) {
   }, tabId);
 };
 
+
+// TODO: Make the auto-reloading of tab state a configuration (in constructor?)
+
+// TODO: Leave some of this configuration code at the bottom (?). Or maybe I can make
+//       it simpler.
 
 /*
  * Initialize extension and listeners

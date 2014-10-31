@@ -1,0 +1,7 @@
+{
+  "name": "character-count-safari",
+  "private": true,
+  "dependencies": {
+    "selection-counter": "0.*"
+  }
+}
