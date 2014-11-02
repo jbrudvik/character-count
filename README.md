@@ -20,7 +20,7 @@ Note: Tabs must be reloaded after installing Character Count.
 Not yet released. Follow development instructions for now.
 
 
-## Development
+## Develop
 
 ### Chrome
 
@@ -41,6 +41,6 @@ The `character-count.safariextension` directory contains all files needed by the
 After installing the dependencies, [add and install the extension using the Safari Extension Builder](https://developer.apple.com/library/safari/documentation/Tools/Conceptual/SafariExtensionGuide/UsingExtensionBuilder/UsingExtensionBuilder.html#//apple_ref/doc/uid/TP40009977-CH2-SW5) from the `character-count.safariextension` directory.
 
 
-## Related
+## See also
 
 - [Word Count](https://github.com/jbrudvik/word-count)
