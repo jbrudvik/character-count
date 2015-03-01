@@ -1,5 +1,5 @@
 {
-  "name": "character-count",
+  "name": "character-count-chrome",
   "private": true,
   "dependencies": {
     "browser-extension-toggle-button": "0.2.*",
