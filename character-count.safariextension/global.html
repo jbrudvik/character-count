@@ -1,18 +1,14 @@
 <!DOCTYPE html>
 <html>
 <head>
+<script src="bower_components/browser-extension-toggle-button/browser-extension-toggle-button.js"></script>
 <script>
 
-/* global safari:false */
-
-
-function handleCommand(event) {
-  if (event.command === 'toggle') {
-    safari.application.activeBrowserWindow.activeTab.page.dispatchMessage('toggle');
-  }
-}
-
-safari.application.addEventListener('command', handleCommand, false);
+var extension = new BrowserExtensionToggleButton({
+  icon: 'active.png',
+  title: 'Hide number of characters selected'
+});
+extension.listen();
 
 </script>
 </head>

@@ -28,13 +28,13 @@
 				<key>Identifier</key>
 				<string>toolbarButton</string>
 				<key>Image</key>
-				<string>toolbar.png</string>
+				<string>inactive.png</string>
 				<key>Label</key>
 				<string>Character Count</string>
 				<key>Palette Label</key>
 				<string></string>
 				<key>Tool Tip</key>
-				<string>Toggle Character Count</string>
+				<string>Show number of characters selected</string>
 			</dict>
 		</array>
 	</dict>
