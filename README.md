@@ -6,6 +6,7 @@ A browser extension for viewing the number of characters in text selections. Whe
 - Quickly view the number of characters on an entire page using keyboard shortcut (OS X: CMD-a, Windows: CTRL-a).
 - Click the extension button to activate/deactivate. The ESC key can also be used to deactivate.
 
+![Character Count Chrome screenshot](https://raw.githubusercontent.com/jbrudvik/character-count/master/screenshots/chrome/line-selected-1280x800.jpg)
 
 ## Install
 
