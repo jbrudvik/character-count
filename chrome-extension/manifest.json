@@ -4,7 +4,7 @@
   "name": "Character Count",
   "short_name": "Char Count",
   "description": "Counts characters in selections.",
-  "version": "1.2.0",
+  "version": "1.2.1",
 
   "background": {
     "scripts": [
