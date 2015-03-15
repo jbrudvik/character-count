@@ -10,17 +10,15 @@ A browser extension for viewing the number of characters in text selections. Whe
 
 ## Install
 
+Note: Tabs may need to be reloaded after installing.
+
 ### Chrome
 
-Install from the Chrome Web Store: [https://chrome.google.com/webstore/detail/character-count/bpjdkinahbalcimnlaijodhiigpfkmjf](https://chrome.google.com/webstore/detail/character-count/bpjdkinahbalcimnlaijodhiigpfkmjf)
-
-Note: Tabs must be reloaded after installing.
+[https://chrome.google.com/webstore/detail/character-count/bpjdkinahbalcimnlaijodhiigpfkmjf](https://chrome.google.com/webstore/detail/character-count/bpjdkinahbalcimnlaijodhiigpfkmjf)
 
 ### Safari
 
 [https://github.com/jbrudvik/character-count/releases/download/v1.2.0/character-count.safariextz](https://github.com/jbrudvik/character-count/releases/download/v1.2.0/character-count.safariextz)
-
-Note: Tabs must be reloaded after installing.
 
 
 ## Develop
