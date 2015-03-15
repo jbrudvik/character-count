@@ -18,7 +18,9 @@ Note: Tabs must be reloaded after installing.
 
 ### Safari
 
-Not yet released. Follow development instructions for now.
+[https://github.com/jbrudvik/character-count/releases/download/v1.2.0/character-count.safariextz](https://github.com/jbrudvik/character-count/releases/download/v1.2.0/character-count.safariextz)
+
+Note: Tabs must be reloaded after installing.
 
 
 ## Develop
