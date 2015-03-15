@@ -18,7 +18,7 @@ Note: Tabs may need to be reloaded after installing.
 
 ### Safari
 
-[https://github.com/jbrudvik/character-count/releases/download/v1.2.0/character-count.safariextz](https://github.com/jbrudvik/character-count/releases/download/v1.2.0/character-count.safariextz)
+[https://github.com/jbrudvik/character-count/releases/download/v1.2.1/character-count.safariextz](https://github.com/jbrudvik/character-count/releases/download/v1.2.1/character-count.safariextz)
 
 
 ## Develop
