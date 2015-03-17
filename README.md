@@ -2,9 +2,9 @@
 
 A browser extension for viewing the number of characters in text selections. When activated, the count appears in the top-right corner of the browser window.
 
-- Select text (with mouse or keyboard) to see the number of characters.
-- Quickly view the number of characters on an entire page using keyboard shortcut (OS X: CMD-a, Windows: CTRL-a).
-- Click the extension button to activate/deactivate. The ESC key can also be used to deactivate.
+- Select text (with mouse or keyboard) to see the number of characters
+- Quickly view the number of characters on an entire page using keyboard shortcut (OS X: CMD-a, Windows: CTRL-a)
+- Click the extension button to activate/deactivate
 
 <img src="https://raw.githubusercontent.com/jbrudvik/character-count/master/screenshots/chrome/line-selected-1280x800.jpg" alt="Character Count Chrome screenshot" width="640"/>
 
@@ -18,7 +18,7 @@ Note: Tabs may need to be reloaded after installing.
 
 ### Safari
 
-[https://github.com/jbrudvik/character-count/releases/download/v1.2.1/character-count.safariextz](https://github.com/jbrudvik/character-count/releases/download/v1.2.1/character-count.safariextz)
+[https://github.com/jbrudvik/character-count/releases/download/v1.3.0/character-count.safariextz](https://github.com/jbrudvik/character-count/releases/download/v1.3.0/character-count.safariextz)
 
 
 ## Develop
